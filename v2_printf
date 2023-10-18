@@ -1,0 +1,109 @@
+#include "main.h"
+/**
+ * _printf - Custom printf function
+ * @format: The format string
+ * Return: Number of characters printed
+ */
+int _printf(const char *format, ...)
+{
+	va_list var;
+	int count = 0;
+	char *p, *start;
+
+	va_start(var, format);
+	if (!format || (format[0] == '%' && !format[1]))
+		return (-1);
+	if (format[0] == '%' && format[1] == ' ' && !format[2])
+		return (-1);
+	for (p = (char *)format; *p; p++)
+	{
+		if (*p != '%')
+		{
+			count += _putchar(*p);
+			continue;
+		}
+		start = p;
+		p++;
+		if (!process_format(p))
+			sum += restart(start, p);
+		else
+			count+= ;
+	}
+	_putchar(flush);
+	va_end(var);
+	return (count);
+}
+
+/**
+ * _process_format - Process format specifiers
+ * @format: The format string
+ * @var: The va_list to access arguments
+ * @count: Pointer to the character count
+ * Return: NULL
+ */
+int (*process_format(char *k))(va_list var, int *count)
+{
+	int i;
+
+	datatype type[] = {
+		{'c', print_char},
+		{'s', print_str},
+		{'d', print_int},
+		{'i', print_int},
+		{'u', print_uint},
+		{'o', print_oct},
+		{'x', print_hex},
+		{'X', print_HEX},
+		{'p', print_pointer},
+		{'R', rot13},
+		{'r', print_rev},
+		{0, 0},
+		};
+	i = 0;
+	while (type[i].choice)
+	{
+		if (*k == type[i].choice[0])
+		{
+			return (type[i].f);
+		}
+		i++
+	}
+	return (0);
+}
+
+/**
+ */
+int print_f(char *k, va_list var)
+{
+	int (*f)int (*process_format(char *k))(va_list var, int *count);
+	if (f)
+		return (f(var));
+	return (0);
+}
+
+/**
+ * print_percent - print percentage sympol (%)
+ * @var: specifier list
+ * Return: putchar
+ */
+int print_percent(va_list var)
+{
+	(void)va_arg(var, int);
+
+	return (_putchar('%'));
+}
+
+/**
+ */
+int restart()
+{
+	int count = 0;
+
+	while (start != stop)
+	{
+		if (start != except)
+			count += _putchar(*start);
+		start++;
+	}
+	return (count);
+}
