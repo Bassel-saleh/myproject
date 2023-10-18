@@ -1,1 +1,1 @@
-this project i made so i can make tests on other projects that i have.
+this is a project about building our own printf function.
